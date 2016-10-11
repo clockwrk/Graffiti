@@ -45,7 +45,7 @@ router.post('/', (req, res, next) => {
     //     location: req.body.location,
     //     user: req.body.user
     // })
-    // .then(createdProject => res.json(creationProject))
+    // .then(createdProject => res.json(creationProject)) //we need to make sure the user is sanitized!
     // .catch(next)
 });
 

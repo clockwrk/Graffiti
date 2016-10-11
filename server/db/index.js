@@ -20,6 +20,7 @@ module.exports = {
 Project.hasOne(Drawing); //just one based on what you were saying right?
 Project.hasMany(Text);
 Project.hasMany(Image); 
+//maybe we need something like: Projects.hasMany(Tasks, { onDelete: 'cascade', hooks: true })
 
 Drawing.belongsTo(Project);
 Text.belongsTo(Project);
