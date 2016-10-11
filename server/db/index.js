@@ -5,23 +5,28 @@ const Location = require('./models/location');
 const Drawing = require('./models/drawing');
 const Text = require('./models/text');
 const Image = require('./models/image');
+const Project = db.define('project');
 
-module.exports = db;
+module.exports = {
+	db,
+	User,
+	Location,
+	Drawing,
+	Text,
+	Image,
+	Project
+};
 
-Location.hasMany(Drawing);
-Location.hasMany(Text);
-Location.hasMany(Image);
-// Location.hasMany(User, {as: 'author'});
+Project.hasOne(Drawing); //just one based on what you were saying right?
+Project.hasMany(Text);
+Project.hasMany(Image); 
 
-Drawing.belongsTo(Location);
-Text.belongsTo(Location);
-Image.belongsTo(Location);
+Drawing.belongsTo(Project);
+Text.belongsTo(Project);
+Image.belongsTo(Project); //this might end up being belongsToMany based on what you were saying about just having a collection of Images, because then an image would be ably
 
+Project.belongsTo(Location);
+Location.hasMany(Project);
 
-Drawing.belongsTo(User);
-Text.belongsTo(User);
-Image.belongsTo(User);
-
-User.hasMany(Drawing);
-User.hasMany(Text);
-User.hasMany(Image);
+Project.belongsTo(User);
+User.hasMany(Project)
