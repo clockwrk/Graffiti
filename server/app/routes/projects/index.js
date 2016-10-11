@@ -36,6 +36,17 @@ router.post('/', (req, res, next) => {
     	})
     	.then(completedAssociations => res.end()) //figure out what comes back and what we want to send in this moment
     	.catch(next)
+    
+    //alternative that I think will work too!
+    Project.create({
+        texts:[req.body.texts],
+        drawing: req.body.drawing,
+        images: [req.body.images],
+        location: req.body.location,
+        user: req.body.user
+    })
+    .then(createdProject => res.json(creationProject))
+    .catch(next)
 });
 
 

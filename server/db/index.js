@@ -5,7 +5,7 @@ const Location = require('./models/location');
 const Drawing = require('./models/drawing');
 const Text = require('./models/text');
 const Image = require('./models/image');
-const Project = db.define('project');
+const Project = db.define('project',{},{defaultScope: include: [{all: true}]});
 
 module.exports = {
 	db,
