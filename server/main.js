@@ -5,6 +5,16 @@ var fs = require('fs');
 var path = require('path')
 
 // Create a node server instance! cOoL!
+
+//Alternate suggestion to line 18 - 33 -- KHGB
+// let options = process.env.NODE_ENV === 'production' ? {} : {
+// 		key: fs.readFileSync(path.join( __dirname, '/env/https/server.key')),
+// 	    cert: fs.readFileSync(path.join(__dirname, '/env/https/server.crt')),
+// 	    requestCert: false,
+// 	    rejectUnauthorized: false
+// 	},
+// 	server = require('http').createServer(options); 
+
 var server;
 var options;
 
@@ -25,7 +35,7 @@ else {
 var createApplication = function () {
     var app = require('./app')(db);
     server.on('request', app); // Attach the Express application.
-    require('./io')(server);   // Attach socket.io.
+    require('./io')(server);   // Attach socket.io. //are you using sockets? Are you planning on using it? -- KHGB
 };
 
 var startServer = function () {
